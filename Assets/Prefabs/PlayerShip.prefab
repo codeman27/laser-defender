@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114635773669796300}
   - component: {fileID: 61402425117394148}
   - component: {fileID: 82804836138863514}
+  - component: {fileID: 50340135795307376}
   m_Layer: 8
   m_Name: PlayerShip
   m_TagString: Untagged
@@ -43,6 +44,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50340135795307376
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1544031844399792}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.09
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!61 &61402425117394148
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -159,7 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fce189a5f1d6ad4b8f15ae723d87161, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shipSpeed: 7
+  shipSpeed: 10
   padding: 1
   projectile: {fileID: 1224673296275084, guid: 9e2cf1e8bc6ee01438e55014cc98c23e, type: 2}
   projectileSpeed: 5

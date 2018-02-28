@@ -27,10 +27,17 @@ public class Enemy : MonoBehaviour {
 
     private void Update()
     {
-        float probability = Time.deltaTime * enemyFiringRate;
-        if(Random.value < probability)
+        if (GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsTag("1"))
         {
-            Fire();
+            print("animation is playing");
+        }
+        else
+        {
+            float probability = Time.deltaTime * enemyFiringRate;
+            if (Random.value < probability)
+            {
+                Fire();
+            }
         }
     }
 

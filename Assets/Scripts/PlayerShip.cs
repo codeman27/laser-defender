@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerShip : MonoBehaviour {
-    public float shipSpeed;
+    public float shipSpeed = 7f;
     public float padding = 1f;
     public GameObject projectile;
     public float projectileSpeed;
@@ -14,9 +14,11 @@ public class PlayerShip : MonoBehaviour {
 
     float xmin;
     float xmax;
-	
+    Rigidbody2D rb;
+
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         float distance = transform.position.z - Camera.main.transform.position.z;
         Vector3 leftMost= Camera.main.ViewportToWorldPoint(new Vector3(0,0,distance));
         Vector3 rightMost = Camera.main.ViewportToWorldPoint(new Vector3(1, 0, distance));
@@ -51,22 +53,25 @@ public class PlayerShip : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetMouseButtonDown(0))
         {
             InvokeRepeating("Fire", 0.0000001f, firingRate);
         }
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetMouseButtonUp(0))
         {
             CancelInvoke("Fire");
         }
 
-        if (Input.GetKey(KeyCode.LeftArrow))
+        Vector2 acc = Input.acceleration;;
+        transform.Translate(acc.x * shipSpeed * Time.deltaTime, 0, 0);
+        /*if (Input.GetKey(KeyCode.LeftArrow))
         {
             transform.position += Vector3.left * shipSpeed * Time.deltaTime;
         } else if (Input.GetKey(KeyCode.RightArrow))
         {
             transform.position += Vector3.right * shipSpeed * Time.deltaTime;
         }
+        */
 
         // Restrict player to gamespace
         float newX = Mathf.Clamp(transform.position.x, xmin, xmax);
