@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerShip : MonoBehaviour {
-    public float shipSpeed = 7f;
+    public float shipSpeed = 9f;
     public float padding = 1f;
     public GameObject projectile;
     public float projectileSpeed;
@@ -64,14 +64,13 @@ public class PlayerShip : MonoBehaviour {
 
         Vector2 acc = Input.acceleration;;
         transform.Translate(acc.x * shipSpeed * Time.deltaTime, 0, 0);
-        /*if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow))
         {
             transform.position += Vector3.left * shipSpeed * Time.deltaTime;
         } else if (Input.GetKey(KeyCode.RightArrow))
         {
             transform.position += Vector3.right * shipSpeed * Time.deltaTime;
         }
-        */
 
         // Restrict player to gamespace
         float newX = Mathf.Clamp(transform.position.x, xmin, xmax);
